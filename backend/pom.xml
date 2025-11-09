@@ -9,9 +9,11 @@
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
+       .source>
         <maven.compiler.target>17</maven.compiler.target>
-   build>
+    </properties>
+
+    <build>
         <plugins>
             <!-- Compiler Plugin -->
             <plugin>
@@ -24,7 +26,9 @@
                 </configuration>
             </plugin>
 
-                           <groupId>org.apache.maven.plugins</groupId>
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
