@@ -42,7 +42,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.deepak.FullstackBackendApplication</mainClass>
+                    <mainClass>com.example.demo.DemoApplicatio</mainClass>
                 </configuration>
             </plugin>
         </plugins>
