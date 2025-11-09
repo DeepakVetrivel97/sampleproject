@@ -40,6 +40,6 @@
                 <configuration>
                     <mainClass>com.example.demo.DemoApplication</mainClass>
                 </configuration>
-                   </plugins>
+                   </plugin>
     </build>
 </project>
