@@ -41,5 +41,6 @@
                     <mainClass>com.example.demo.DemoApplication</mainClass>
                 </configuration>
                    </plugin>
+        </plugins>
     </build>
 </project>
