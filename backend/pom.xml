@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <properties>
-       .source>
+        <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
@@ -26,7 +26,7 @@
                 </configuration>
             </plugin>
 
-            -->
+            <!-- Jar Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -34,7 +34,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.deepak.Main</mainClass> <!-- Replace with your main class -->
+                            <mainClass>com.deepak.Main</mainClass> <!-- Replace with your actual main class -->
                         </manifest>
                     </archive>
                 </configuration>
