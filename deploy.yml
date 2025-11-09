@@ -1,9 +1,17 @@
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ci-cd
+---
+# Service Account
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: jenkins-sa
   namespace: ci-cd
 ---
+# Role for Jenkins
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -14,6 +22,7 @@ rules:
     resources: ["pods", "services", "deployments"]
     verbs: ["get", "list", "create", "update", "patch", "delete"]
 ---
+# RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -28,10 +37,12 @@ roleRef:
   name: jenkins-deployer
   apiGroup: rbac.authorization.k8s.io
 ---
+# Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fullstack-backend-deployment
+  namespace: ci-cd
   labels:
     app: fullstack-backend
     environment: production
@@ -48,9 +59,10 @@ spec:
         environment: production
         version: "1.0.0"
     spec:
+      serviceAccountName: jenkins-sa
       containers:
       - name: fullstack-backend-container
-        image: your-dockerhub-username/fullstack-backend:1.0.0
+        image: deepakvetrivel97/fullstack-backend:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -73,4 +85,18 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
-
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: fullstack-backend-service
+  namespace: ci-cd
+spec:
+  selector:
+    app: fullstack-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
